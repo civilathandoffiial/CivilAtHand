@@ -1,35 +1,73 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { AuthProvider } from './contexts/AuthContext';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import ClientPage from './components/ClientPage';
+import Dashboard from './components/Dashboard';
+import Footer from './components/Footer';
+import LoginModal from './components/auth/LoginModal';
+import RegisterModal from './components/auth/RegisterModal';
+import { useAuth } from './contexts/AuthContext';
 
-function App() {
-  const [count, setCount] = useState(0)
+function AppContent() {
+  const { isAuthenticated } = useAuth();
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  const openLoginModal = () => setIsLoginModalOpen(true);
+  const closeLoginModal = () => setIsLoginModalOpen(false);
+  const openRegisterModal = () => setIsRegisterModalOpen(true);
+  const closeRegisterModal = () => setIsRegisterModalOpen(false);
+
+  const switchToRegister = () => {
+    closeLoginModal();
+    openRegisterModal();
+  };
+
+  const switchToLogin = () => {
+    closeRegisterModal();
+    openLoginModal();
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen bg-gray-50">
+      <Navbar 
+        onLoginClick={openLoginModal}
+        onRegisterClick={openRegisterModal}
+      />
+      
+      {isAuthenticated ? (
+        <Dashboard />
+      ) : (
+        <>
+          <HeroSection />
+          <ClientPage />
+        </>
+      )}
+      
+      <Footer />
+      
+      <LoginModal 
+        isOpen={isLoginModalOpen}
+        onClose={closeLoginModal}
+        onSwitchToRegister={switchToRegister}
+      />
+      
+      <RegisterModal 
+        isOpen={isRegisterModalOpen}
+        onClose={closeRegisterModal}
+        onSwitchToLogin={switchToLogin}
+      />
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
+}
+
+export default App;

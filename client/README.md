@@ -1,69 +1,238 @@
-# React + TypeScript + Vite
+# Civil At Hand - Professional Civil Engineering Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive digital hub for the civil engineering community, integrating learning resources, industry updates, professional services, and expert-written blogs. Built with React 19, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🔐 Role-Based Authentication System
+- **Student**: Access study materials, track progress, find internships
+- **Professional**: Manage services, view client requests, network with peers
+- **Client**: Track project progress, communicate with engineers, manage payments
+- **Admin**: User management, content moderation, analytics
 
-## Expanding the ESLint configuration
+### 📢 Civil Engineering Updates
+- Latest job notifications (Central & State, private sector)
+- Exam results & answer keys
+- Internship opportunities
+- Tender announcements
+- Category filters and search functionality
+- Social sharing (WhatsApp, LinkedIn, Telegram)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 📚 Study Material & Resources
+- Class notes (semester & subject-wise)
+- Civil engineering textbooks (PDFs)
+- Previous year question papers
+- Lab manuals
+- Design codes (IS, IRC, etc.)
+- Advanced search and filtering
+- Premium content access
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🛠️ Professional Services
+- **Civil Engineering Services**:
+  - AutoCAD & Revit design
+  - Estimation & costing
+  - Structural analysis
+  - Soil & foundation reports
+- **Academic Services**:
+  - PPT preparation
+  - Excel automation
+  - 3D rendering
+  - Research support
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Frontend**: React 19 + TypeScript
+- **Styling**: Tailwind CSS v4
+- **Build Tool**: Vite
+- **State Management**: React Context API
+- **Authentication**: Custom role-based system
+- **UI Components**: Custom components with Tailwind CSS
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── auth/
+│   │   ├── LoginModal.tsx
+│   │   ├── RegisterModal.tsx
+│   │   └── ProtectedRoute.tsx
+│   ├── Navbar.tsx
+│   ├── HeroSection.tsx
+│   ├── ClientPage.tsx
+│   ├── Dashboard.tsx
+│   └── Footer.tsx
+├── contexts/
+│   └── AuthContext.tsx
+├── App.tsx
+├── main.tsx
+└── index.css
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd civilathand/client
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Install Tailwind CSS PostCSS plugin**
+   ```bash
+   npm install -D @tailwindcss/postcss
+   ```
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to `http://localhost:5173`
+
+## 🔐 Demo Accounts
+
+For testing purposes, you can use these demo accounts:
+
+| Role | Email | Password |
+|------|-------|----------|
+| Student | student@example.com | password |
+| Professional | professional@example.com | password |
+| Client | client@example.com | password |
+| Admin | admin@example.com | password |
+
+## 🎨 Key Components
+
+### Authentication System
+- **AuthContext**: Manages user authentication state and role-based access
+- **ProtectedRoute**: Wraps components that require authentication
+- **LoginModal/RegisterModal**: User authentication forms
+
+### Navigation
+- **Navbar**: Professional navigation with user menu and role badges
+- **Tab Navigation**: Content switching between Updates, Resources, and Services
+
+### Content Sections
+- **HeroSection**: Compelling landing section with call-to-action
+- **ClientPage**: Main content with tabbed interface
+- **Dashboard**: Role-specific dashboard for authenticated users
+- **Footer**: Professional footer with links and social media
+
+## 🎯 User Roles & Permissions
+
+### Student
+- Access to study materials and resources
+- Request specific materials
+- View internship opportunities
+- Track learning progress
+
+### Professional Engineer
+- Manage service requests
+- View client projects
+- Access industry updates
+- Network with peers
+
+### Client
+- Submit service requests
+- Track project progress
+- Communicate with engineers
+- Manage payments
+
+### Administrator
+- User management
+- Content moderation
+- Analytics and reports
+- System configuration
+
+## 🔧 Configuration
+
+### Tailwind CSS
+The project uses Tailwind CSS v4 with PostCSS. Configuration is in:
+- `postcss.config.cjs` - PostCSS configuration
+- `index.css` - Tailwind imports and global styles
+
+### Environment Variables
+Create a `.env` file for environment-specific configuration:
+```env
+VITE_API_URL=your_api_url_here
+VITE_APP_NAME=Civil At Hand
 ```
+
+## 📱 Responsive Design
+
+The application is fully responsive and optimized for:
+- Desktop (1024px+)
+- Tablet (768px - 1023px)
+- Mobile (320px - 767px)
+
+## 🚀 Deployment
+
+### Build for Production
+```bash
+npm run build
+```
+
+### Preview Production Build
+```bash
+npm run preview
+```
+
+### Deploy to Vercel/Netlify
+The project is configured for easy deployment to modern hosting platforms.
+
+## 🔒 Security Features
+
+- Role-based access control (RBAC)
+- Protected routes for authenticated users
+- Input validation and sanitization
+- Secure authentication flow
+- File upload restrictions
+
+## 📈 Future Enhancements
+
+- **Phase 2**: Payment integration (Stripe/PayPal)
+- **Phase 3**: Real-time chat and notifications
+- **Phase 4**: Advanced analytics and reporting
+- **Phase 5**: Mobile app development
+- **Phase 6**: AI-powered content recommendations
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Support
+
+For support and questions:
+- Email: support@civilathand.com
+- Documentation: [docs.civilathand.com](https://docs.civilathand.com)
+- Issues: [GitHub Issues](https://github.com/your-repo/issues)
+
+## 🙏 Acknowledgments
+
+- React team for the amazing framework
+- Tailwind CSS for the utility-first CSS framework
+- Vite for the fast build tool
+- Civil engineering community for inspiration
+
+---
+
+**Built with ❤️ for the Civil Engineering Community**
